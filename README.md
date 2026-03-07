@@ -1,6 +1,6 @@
 # SmartFarm Basic Dashboard (Kivy)
 
-![SmartFarm dashboard screenshot](ss1.jpg)
+![SmartFarm dashboard screenshot](ss1.png)
 
 A simple training/demo project that reads sensor values (from Arduino over serial) and shows them on a Kivy dashboard UI.
 
