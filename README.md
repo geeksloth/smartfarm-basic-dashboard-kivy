@@ -2,7 +2,9 @@
 
 ![SmartFarm dashboard screenshot](screenshot.png)
 
-A simple training/demo project that reads sensor values (from Arduino over serial) and shows them on a Kivy dashboard UI (designed for Raspberry Pi, but can also run on desktop).
+A simple training/demo project that reads sensor values (from Arduino over serial) and shows them on a Kivy dashboard UI.
+
+Target device: **Raspberry Pi 5**. It can also run on a PC for UI testing/demo purposes.
 
 ## Features
 
@@ -56,6 +58,13 @@ python -m pip install kivy-garden.matplotlib
 ```bash
 python demo.py
 ```
+
+## Running on PC (without GPIO)
+
+GPIO control is intended for Raspberry Pi and typically uses the `gpiozero` library.
+To run on a PC, comment out (or keep commented) the `gpiozero` import and any GPIO-related setup/functions in `demo.py`.
+
+In this repo, the GPIO-related lines are already commented (look for `gpiozero`, `Button`, `OutputDevice`, and `toggle_power`).
 
 ## Arduino / Serial Input
 
