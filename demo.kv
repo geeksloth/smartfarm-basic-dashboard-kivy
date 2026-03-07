@@ -1,0 +1,363 @@
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+<MainLayout>:
+	orientation: "vertical"
+	BoxLayout:
+		canvas.before:
+			Color:
+				rgba: 236/255,236/255,236/255,.8
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		size_hint_y: 0.1
+		BoxLayout:
+			spacing: 10
+			padding: 15,5,15,5
+			Label:
+				text: app.current_time
+				color: 0,0,0,1
+				font_size: min(self.width, self.height) * 0.9
+				bold: True
+			Button:
+				background_color: 0,0,0,0
+				background_normal: ""
+				canvas.before:
+					Color:
+						rgba: (34/255,59/255,193/255,0.7) if self.state=="normal" else (34/255,59/255,193/255,1)
+					RoundedRectangle:
+						pos: self.pos
+						size: self.size
+						radius: [20]
+				text: "หน้าหลัก"
+				font_name: "Thai"
+				font_size: min(self.width, self.height) * 0.7
+				bold: True
+				on_release:
+					if root.ids.sm.current != "home" : root.ids.sm.current = "home"
+			Button:
+				background_color: 0,0,0,0
+				background_normal: ""
+				canvas.before:
+					Color:
+						rgba: (111/255,74/255,0/255,0.8) if self.state=="normal" else (111/255,74/255,0/255,1)
+					RoundedRectangle:
+						pos: self.pos
+						size: self.size
+						radius: [20]
+				text: "ปรับแต่งค่า"
+				font_name: "Thai"
+				font_size: min(self.width, self.height) * 0.7
+				bold: True
+				on_release:
+					if root.ids.sm.current != "humidity" : root.ids.sm.current = "humidity"
+			Button:
+				background_color: 0,0,0,0
+				background_normal: ""
+				canvas.before:
+					Color:
+						rgba: (0/255,111/255,29/255,0.8) if self.state=="normal" else (0/255,111/255,29/255,1)
+					RoundedRectangle:
+						pos: self.pos
+						size: self.size
+						radius: [20]
+				text: "กราฟ"
+				font_name: "Thai"
+				font_size: min(self.width, self.height) * 0.7
+				bold: True
+				on_release:
+					if root.ids.sm.current != "raindrop" : root.ids.sm.current = "raindrop"
+	ScreenManager:
+		size_hint_y: 0.9
+		id: sm
+		transition: NoTransition()
+		HomeScreen:
+			name: "home"
+		ConfigScreen:
+			name: "humidity"
+		DashboardScreen:
+			name: "raindrop"
+<HomeScreen>:
+	canvas.before:
+		Color:
+			rgba: 1,1,1,1
+		Rectangle:
+			source: "farm.jpg"
+			pos: self.pos
+			size: self.size
+	GridLayout:
+		cols: 2
+		spacing: 15
+		padding: 15
+		BoxLayout:
+			canvas.before:
+				Color:
+					rgba: 0, 0, 0, 0.08
+				RoundedRectangle:
+					pos: self.x + 3, self.y - 6
+					size: self.size
+					radius: [15]
+				Line:
+					rounded_rectangle: (self.x, self.y, self.width, self.height, 15)
+					width: 1
+				Color:
+					rgba: 1,1,1,0.8
+				RoundedRectangle:
+					pos: self.pos
+					size: self.size
+					radius: [15]
+			BoxLayout:
+				padding: 20
+				BoxLayout:
+					padding: 20
+					Image:
+						source: "soil_icon.png"
+						anim_delay: 0.2
+					
+				BoxLayout:
+					orientation: "vertical"
+					padding: 0,15,0,15
+					Label:
+						text: "ความชื้นในดิน"
+						color: 0,0,0,1
+						font_name: "Thai"
+						font_size: min(self.width, self.height) * 0.55
+						bold: True
+					Label:
+						text: app.soil + "%"
+						color: 0,0,0,1
+						font_name: "Thai"
+						font_size: min(self.width, self.height) * 1
+						bold: True
+		BoxLayout:
+			canvas.before:
+				Color:
+					rgba: 0, 0, 0, 0.08
+				RoundedRectangle:
+					pos: self.x + 3, self.y - 6
+					size: self.size
+					radius: [15]
+				Line:
+					rounded_rectangle: (self.x, self.y, self.width, self.height, 15)
+					width: 1
+				Color:
+					rgba: 1,1,1,0.8
+				RoundedRectangle:
+					pos: self.pos
+					size: self.size
+					radius: [15]
+			BoxLayout:
+				padding: 20
+				BoxLayout:
+					padding: 20
+					Image:
+						source: "rain_icon.png"
+					
+				BoxLayout:
+					orientation: "vertical"
+					padding: 0,15,0,15
+					Label:
+						text: "สถานะฝนตก"
+						color: 0,0,0,1
+						font_name: "Thai"
+						font_size: min(self.width, self.height) * 0.55
+						bold: True
+					Label:
+						text: app.rain + "%"
+						color: 0,0,0,1
+						font_name: "Thai"
+						font_size: min(self.width, self.height) * 1
+						bold: True
+		BoxLayout:
+			canvas.before:
+				Color:
+					rgba: 0, 0, 0, 0.08
+				RoundedRectangle:
+					pos: self.x + 3, self.y - 6
+					size: self.size
+					radius: [15]
+				Line:
+					rounded_rectangle: (self.x, self.y, self.width, self.height, 15)
+					width: 1
+				Color:
+					rgba: 1,1,1,0.8
+				RoundedRectangle:
+					pos: self.pos
+					size: self.size
+					radius: [15]
+			BoxLayout:
+				padding: 20
+				BoxLayout:
+					padding: 20
+					Image:
+						source: "volume_icon.png"
+					
+				BoxLayout:
+					orientation: "vertical"
+					padding: 0,15,0,15
+					Label:
+						text: "การปรับระดับ"
+						color: 0,0,0,1
+						font_name: "Thai"
+						font_size: min(self.width, self.height) * 0.55
+						bold: True
+					Label:
+						text: app.vr + "%"
+						color: 0,0,0,1
+						font_name: "Thai"
+						font_size: min(self.width, self.height) * 1
+						bold: True
+		BoxLayout:
+			canvas.before:
+				Color:
+					rgba: 0, 0, 0, 0.08
+				RoundedRectangle:
+					pos: self.x + 3, self.y - 6
+					size: self.size
+					radius: [15]
+				Line:
+					rounded_rectangle: (self.x, self.y, self.width, self.height, 15)
+					width: 1
+				Color:
+					rgba: 1,1,1,0.8
+				RoundedRectangle:
+					pos: self.pos
+					size: self.size
+					radius: [15]
+			BoxLayout:
+				padding: 20
+				BoxLayout:
+					padding: 20
+					Image:
+						source: "power.png"
+					
+				BoxLayout:
+					orientation: "vertical"
+					padding: 0,15,0,15
+					Label:
+						text: "สถานะไฟ"
+						color: 0,0,0,1
+						font_name: "Thai"
+						font_size: min(self.width, self.height) * 0.55
+						bold: True
+					Label:
+						text: app.power_status
+						color: 0,0,0,1
+						font_name: "Thai"
+						font_size: min(self.width, self.height) * 1
+						bold: True
+			
+<ConfigScreen>:
+	canvas.before:
+		Color:
+			rgba: 1,1,1,1
+		Rectangle:
+			source: "dirt.jpg"
+			pos: self.pos
+			size: self.size
+	BoxLayout:
+		padding: 20
+		BoxLayout:
+			orientation: "vertical"
+			padding: 20
+			spacing: 20
+			canvas.before:
+				Color:
+					rgba: 1,1,1,0.8
+				RoundedRectangle:
+					pos: self.pos
+					size: self.size
+					radius: [15]
+			BoxLayout:
+				spacing: 10
+				Label:
+					text: "ความชื้นเปียก :"
+					color: 0,0,0,1
+					font_name: "Thai"
+					font_size: min(self.width, self.height) * 0.7
+					bold: True
+				TextInput:
+					id: soil_wet_input
+					text: str(app.soil_wet)
+					font_size: min(self.width, self.height) * 0.7
+					bold: True
+					input_filter: "int"
+			BoxLayout:
+				spacing: 10
+				Label:
+					text: "ความชื้นแห้ง :"
+					color: 0,0,0,1
+					font_name: "Thai"
+					font_size: min(self.width, self.height) * 0.7
+					bold: True
+				TextInput:
+					id: soil_dry_input
+					text: str(app.soil_dry)
+					font_size: min(self.width, self.height) * 0.7
+					bold: True
+					input_filter: "int"
+			BoxLayout:
+				spacing: 10
+				Label:
+					text: "ระดับฝนเปียก :"
+					color: 0,0,0,1
+					font_name: "Thai"
+					font_size: min(self.width, self.height) * 0.7
+					bold: True
+				TextInput:
+					id: rain_wet_input
+					text: str(app.rain_wet)
+					font_size: min(self.width, self.height) * 0.7
+					bold: True
+					input_filter: "int"
+			BoxLayout:
+				spacing: 10
+				Label:
+					text: "ระดับฝนแห้ง :"
+					color: 0,0,0,1
+					font_name: "Thai"
+					font_size: min(self.width, self.height) * 0.7
+					bold: True
+				TextInput:
+					id: rain_dry_input
+					text: str(app.rain_dry)
+					font_size: min(self.width, self.height) * 0.7
+					bold: True
+					input_filter: "int"
+			BoxLayout:
+				Button:
+					background_color: 0,0,0,0
+					background_normal: ""
+					canvas.before:
+						Color:
+							rgba: (111/255,74/255,0/255,0.8) if self.state=="normal" else (111/255,74/255,0/255,1)
+						RoundedRectangle:
+							pos: self.pos
+							size: self.size
+							radius: [15]
+					text: "บันทึก"
+					font_name: "Thai"
+					font_size: min(self.width, self.height) * 0.5
+					bold: True
+					on_release:
+						root.save_config()
+				
+<DashboardScreen>:
+	canvas.before:
+		Color:
+			rgba: 1,1,1,1
+		Rectangle:
+			source: "humidity.jpg"
+			pos: self.pos
+			size: self.size
+	BoxLayout:
+        padding: [10]
+		BoxLayout:
+			canvas.before:
+				Color:
+					rgba: 1, 1, 1, 0.8
+				RoundedRectangle:
+					pos: self.pos
+					size: self.size
+					radius: [15]
+			BoxLayout:
+				id: temp_dashboard
+				

@@ -1,0 +1,6 @@
+kivy
+pyserial
+numpy
+matplotlib
+kivy-garden
+kivy-garden.matplotlib

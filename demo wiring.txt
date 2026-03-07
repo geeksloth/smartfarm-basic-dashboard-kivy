@@ -1,0 +1,19 @@
+Arduino Wiring
+------------------------------
++5V, GND
+soil module = A0
+
+rain module = A1
+
+vr module = A2
+
+LCD module = SDA A4, SCL A5
+------------------------------
+
+
+
+Raspi GPIO Wiring
+------------------------------
+GPIO 17 --> Button <-- GND
+GPIO 27 --> Arduino D2
+------------------------------
