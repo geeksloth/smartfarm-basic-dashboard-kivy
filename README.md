@@ -101,5 +101,5 @@ You can change values in the app’s “Config” screen; it will write updates 
 
 ## Acknowledgements
 
-- Author/Trainer: Mr. Patchara Paungsiri
+- Author/Instructor: Mr. Patchara Paungsiri
 - College of Computing, Khon Kaen University – SmartFarm training program. Educational use only.
